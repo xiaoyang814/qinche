@@ -2166,3 +2166,14 @@ setInterval(function(){if(document.getElementById('beauPreviewScreen'))renderBea
 </script>
 </body>
 </html>
+</script>
+<script>
+(function(){
+var newIcon='data:image/svg+xml;charset=utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><defs><linearGradient id="bgNew" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9ec7"/><stop offset="1" stop-color="#9b51e0"/></linearGradient></defs><rect width="180" height="180" rx="40" fill="url(#bgNew)"/><g fill="#ffffff"><circle cx="70" cy="70" r="14"/><circle cx="90" cy="60" r="16"/><circle cx="110" cy="70" r="14"/><circle cx="60" cy="85" r="14"/><circle cx="120" cy="85" r="14"/><ellipse cx="55" cy="75" rx="12" ry="8" transform="rotate(-30 55 75)"/><ellipse cx="125" cy="75" rx="12" ry="8" transform="rotate(30 125 75)"/><ellipse cx="90" cy="95" rx="32" ry="30"/></g><circle cx="80" cy="92" r="3.5" fill="#333"/><circle cx="100" cy="92" r="3.5" fill="#333"/><ellipse cx="90" cy="105" rx="4" ry="3" fill="#333"/><text x="90" y="155" font-size="20" font-family="PingFang SC,sans-serif" font-weight="600" text-anchor="middle" fill="#ffffff">xiaoyang</text></svg>');
+document.querySelectorAll('link[rel="apple-touch-icon"],link[rel="icon"]').forEach(function(l){l.parentNode.removeChild(l)});
+var a=document.createElement('link');a.rel='apple-touch-icon';a.href=newIcon;document.head.appendChild(a);
+var b=document.createElement('link');b.rel='icon';b.type='image/svg+xml';b.href=newIcon;document.head.appendChild(b);
+})();
+</script>
+</body>
+</html>
