@@ -2407,3 +2407,15 @@ renderHomePages();
 </script>
 </body>
 </html>
+</script>
+<script>
+(function(){
+var svgIcon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" rx="40" fill="#ffffff"/><text x="90" y="122" font-size="86" font-family="PingFang SC,sans-serif" font-weight="700" text-anchor="middle" fill="#111111">小羊</text></svg>';
+var newIcon='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgIcon);
+document.querySelectorAll('link[rel="apple-touch-icon"],link[rel="icon"]').forEach(function(l){l.parentNode.removeChild(l)});
+var a=document.createElement('link');a.rel='apple-touch-icon';a.href=newIcon;document.head.appendChild(a);
+var b=document.createElement('link');b.rel='icon';b.type='image/svg+xml';b.href=newIcon;document.head.appendChild(b);
+})();
+</script>
+</body>
+</html>
