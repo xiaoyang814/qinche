@@ -344,8 +344,7 @@ body.theme-dark .wx-extra-item .we-name{color:#8b9198}
 .bi-title .bi-ok{position:absolute;right:0;top:-2px;background:#1c1c1e;color:#fff;border:0;border-radius:16px;padding:7px 18px;font-size:13px;cursor:pointer;font-family:inherit}
 .bi-textarea{width:100%;border:1px solid #e2e5e9;border-radius:12px;padding:12px 14px;font-size:14px;outline:none;font-family:inherit;box-sizing:border-box;resize:none;min-height:260px;flex:1}
 .bi-row{display:flex;gap:8px;margin-top:12px}
-.bi-row button{flex:1;padding:11px 0;border-radius:14px;border:1px solid #e2e5e9;background:#fff;font-size:13px;cursor:pointer;font-family:inherit;color:#333}
-.bi-row button.active{border-color:#f5b8b8;background:#fff0f0;color:#e05a5a;font-weight:600}
+.bi-row button{flex:1;padding:11px 0;border-radius:14px;border:1px solid #e2e5e9;background:#fff;font-size:13px;cursor:pointer;font-family:inherit;.bi-row button.active{border-color:#f5b8b8;background:#fff0f0;color:#e05a5a;font-weight:600}
 .bi-btns{display:flex;gap:10px;margin-top:16px}
 .bi-btns button{flex:1;padding:13px 0;border:0;border-radius:14px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:500}
 .bi-cancel{background:#f5f6f8;color:#111}
@@ -581,6 +580,7 @@ var onDown=function(e){
 if(!homeEditMode)return;
 longPressed=false;
 if(pressTimer)clearTimeout(pressTimer);
+var ev=e.touches?e.touches[0]:e;
 pressTimer=setTimeout(function(){pressTimer=null;longPressed=true;startDragApp(cell,e)},400);
 };
 var onUp=function(){if(pressTimer){clearTimeout(pressTimer);pressTimer=null}};
@@ -842,7 +842,7 @@ var v=(s.intervals&&typeof s.intervals[it[0]]==='number')?s.intervals[it[0]]:0;
 return'<div style="padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #f0f0f0"><div style="font-size:15px;color:#111;flex:1">'+it[1]+'</div><input type="number" class="pi-input" data-key="'+it[0]+'" value="'+v+'" min="1" style="width:80px;border:1px solid #e2e5e9;border-radius:10px;padding:8px;font-size:15px;text-align:center;font-family:inherit;outline:none"/></div>';
 }).join('')+
 '</div>'+
-'<div class="settings-group-title">联系人行为控制</div><div class="settings-block">'+
+'<div class="settings-group-title">联系人行为控制</'<div class="settings-group-title">联系人行为控制</div><div class="settings-block">'+
 sw('readReceipt','已读回执','开启后显示对方已读状态')+
 sw('quoteReply','引用回复','开启后对方可能引用回复你的消息')+
 sw('emojiMix','emoji融入消息','开启后联系人发字卡时会夹带 emoji 内容')+
@@ -985,7 +985,7 @@ document.getElementById('moCmtClose').addEventListener('click',close);
 document.getElementById('moCmtCancel').addEventListener('click',close);
 mask.addEventListener('click',function(e){if(e.target===mask)close()});
 document.getElementById('moCmtStickerDel').addEventListener('click',function(){selSticker='';document.getElementById('moCmtStickerPreview').style.display='none'});
-document.getElementById('moCmtEmojiBtn').addEventListener('click',function(){var p=document.getElementById('moCmtPicker');if(p.style.display==='block'&&p.dataset.t==='emoji'){p.style.display='none';return}p.style.display='block';p.dataset.t='emoji';p.innerHTML='<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px">'+builtinEmoji.map(function(e){return'<div class="mce" data-e="'+e+'" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;border-radius:6px">'+e+'</div>'}).join('')+'</div>';p.querySelectorAll('.mce').forEach(function(it){it.addEventListener('click',function(){var t=document.getElementById('moCmtText');t.value=(t.value||'')+it.dataset.e;t.focus()})})});
+document.getElementById('moCmtEmojiBtn').addEventListener('click',function(){var p=document.getElementById('moCmtPicker');if(p.style.display==='block'&&p.dataset.t==='emoji'){p.style.display='none';return}p.style.display='block';p.dataset.t='emoji';p.innerHTML='<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px">'+builtinEmoji.map(function(e){return'<div class="mce" data-e="'+e+'" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;border-radius:6px">'+e+'</div>'}).join('')+'</div>';p.querySelector';p.querySelectorAll('.mce').forEach(function(it){it.addEventListener('click',function(){var t=document.getElementById('moCmtText');t.value=(t.value||'')+it.dataset.e;t.focus()})})});
 document.getElementById('moCmtStickerBtn').addEventListener('click',function(){var p=document.getElementById('moCmtPicker');if(p.style.display==='block'&&p.dataset.t==='sticker'){p.style.display='none';return}if(!allCustom.length){alert('还没有自定义表情，去字卡库或微信表情面板添加');return}p.style.display='block';p.dataset.t='sticker';p.innerHTML='<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">'+allCustom.map(function(s,i){return'<div class="mcs" data-i="'+i+'" style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:#f5f6f8;cursor:pointer"><img src="'+s+'" style="width:100%;height:100%;object-fit:cover"/></div>'}).join('')+'</div>';p.querySelectorAll('.mcs').forEach(function(it){it.addEventListener('click',function(){selSticker=allCustom[parseInt(it.dataset.i,10)];document.getElementById('moCmtStickerImg').src=selSticker;document.getElementById('moCmtStickerPreview').style.display='block';p.style.display='none'})})});
 document.getElementById('moCmtSend').addEventListener('click',function(){
 var t=document.getElementById('moCmtText').value.trim();
@@ -1463,9 +1463,8 @@ else if(key==='music'){var songs=data.music.songs||[];var html='<div style="back
 else if(key==='watch'){var list=data.watch.list||[];var html='<div style="background:#fff;border-radius:14px;padding:16px"><div style="font-size:14px;font-weight:600;margin-bottom:12px">TA 最近看</div>'+(list.length?list.map(function(w){return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0"><div style="width:60px;height:44px;border-radius:8px;background:linear-gradient(135deg,#2c2c2e,#555);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;flex-shrink:0">▶</div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:500">'+esc(w.name)+'</div><div style="font-size:12px;color:#8b9198;margin-top:4px">进度：'+esc(w.progress||'—')+'</div></div><div style="font-size:11px;color:#b0b0b0;flex-shrink:0">'+esc(w.time||'')+'</div></div>'}).join(''):'<div style="text-align:center;color:#8b9198;padding:40px">TA 还没有看过剧</div>')+'</div>';openSimple('TA 的观影',html)}
 else if(key==='countdown'){var list=data.countdown.list||[];var html='<div style="display:flex;flex-direction:column;gap:12px">';if(!list.length)html+='<div style="text-align:center;color:#8b9198;padding:40px">还没有倒数日</div>';else html+=list.map(function(c){return'<div style="background:#fff;border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:15px;font-weight:600">'+esc(c.name)+'</div><div style="font-size:12px;color:#8b9198;margin-top:4px">'+esc(c.date)+'</div></div><div style="font-size:24px;font-weight:700;color:#9b51e0">'+(c.days>=0?c.days:'已过')+'<span style="font-size:12px;color:#8b9198;font-weight:400;margin-left:2px">天</span></div></div>'}).join('');html+='</div>';openSimple('TA 的倒数日',html)}
 else if(key==='store'){var items=data.store.items||[];var html='<div style="background:linear-gradient(135deg,#f2994a,#eb5757);border-radius:20px;padding:22px;color:#fff;margin-bottom:16px"><div style="font-size:13px;opacity:.9">TA 的余额</div><div style="font-size:32px;font-weight:700;margin-top:6px">¥ '+fmtMoney(data.store.balance)+'</div></div><button id="hisApplyFunds" style="width:100%;padding:12px;border:0;border-radius:12px;background:#fff7ed;color:#f2994a;font-size:14px;cursor:pointer;font-family:inherit;font-weight:600;margin-bottom:10px">向系统申请资金</button><div style="background:#fff;border-radius:14px;padding:16px"><div style="font-size:14px;font-weight:600;margin-bottom:12px">购买记录</div>'+(items.length?items.map(function(it){return'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0"><div><div style="font-size:14px;font-weight:500">'+esc(it.name)+'</div><div style="font-size:12px;color:#8b9198;margin-top:2px">¥ '+it.price+'</div></div><div style="font-size:12px;color:#07c160">已购买</div></div>'}).join(''):'<div style="text-align:center;color:#8b9198;padding:40px">TA 还没有买过东西</div>')+'</div>';openSimple('TA 的商店',html);var hb=document.getElementById('hisApplyFunds');if(hb)hb.addEventListener('click',function(){openApplyFundsDialog('his')})}
-else if(key==='fav'){var list=data.fav.list||[];var html='<div style="display:flex;flex-direction:column;gap:10px">';if(!list.length)html+='<div style="text-align:center;color:#8b9198;padding:40px">TA 还没有收藏</div>';else html+=list.map(function(t,i){return'<div style="background:#fff;border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:50%;background:#f2994a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">'+(i+1)+'</div><div style="flex:1;font-size:14px;line-height:1.5">'+esc(t)+'</div></div>'}).join('');html+='</div>';openSimple('TA 的收藏',html)}
-}
-/* ========== 倒数日（重做版） ========== */
+else if(key==='fav'){var list=data.fav.list||[];var html='<div style="display:flex;flex-direction:column;gap:10px">';if(!list.length)html+='<div style="text-align:center;color:#8b9198;padding:40px">TA 还没有收藏</div>';else html+=list.map(function(t,i){return'<div style="background:#fff;border-radius:12px;padding
+  /* ========== 倒数日（重做版） ========== */
 var cdState={selDate:'',mode:'countup',curYear:0,curMonth:0};
 function openCountdown(){
 var today=new Date();today.setHours(0,0,0,0);
@@ -1608,7 +1607,7 @@ function importLocalMusic(){var i=document.createElement('input');i.type='file';
 function importUrlMusic(){openPopup('<div class="wx-popup-title">从链接导入</div><input class="wx-popup-input" id="muName" placeholder="歌曲名"/><input class="wx-popup-input" id="muArtist" placeholder="歌手（可选）"/><input class="wx-popup-input" id="muSrc" placeholder="音频链接（http://... .mp3/.m4a）"/><div style="font-size:11px;color:#8b9198;margin-bottom:12px;line-height:1.6">提示：从网易云/QQ音乐等分享里复制音频直链，粘贴到这里即可。</div><div class="wx-popup-btns"><button class="wx-popup-btn cancel" id="muC">取消</button><button class="wx-popup-btn confirm" id="muK">添加</button></div>');document.getElementById('muC').addEventListener('click',closePopup);document.getElementById('muK').addEventListener('click',function(){var n=document.getElementById('muName').value.trim();var a=document.getElementById('muArtist').value.trim()||'网络';var s=document.getElementById('muSrc').value.trim();if(!n)return alert('请填歌曲名');if(!s)return alert('请填链接');if(!extraState.musicList)extraState.musicList=[];extraState.musicList.push({id:'m'+Date.now(),name:n,artist:a,src:s,type:'url'});saveExtra();closePopup();closeMusicApp();openMusicList()})}
 function playMusicAt(i){var list=extraState.musicList||[];if(!list.length)return;if(i<0)i=list.length-1;if(i>=list.length)i=0;extraState.musicIndex=i;saveExtra();var a=ensureMusicAudio();a.src=list[i].src;a.play().then(function(){extraState.musicPlaying=true;saveExtra();closeMusicApp();openMusicPlayer()}).catch(function(){extraState.musicPlaying=false;saveExtra();closeMusicApp();openMusicPlayer();alert('播放失败：请检查音频链接是否有效')})}
 function openTogetherRoom(){var song=extraState.musicList&&extraState.musicIndex>=0?extraState.musicList[extraState.musicIndex]:null;var html='<div id="togetherRoom" style="position:fixed;inset:0;background:#0a0a0a;color:#fff;display:flex;flex-direction:column;z-index:300;overflow:hidden"><div style="padding:16px;padding-top:calc(16px + env(safe-area-inset-top));display:flex;align-items:center;gap:12px"><div id="trBack" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><polyline points="15 18 9 12 15 6"/></svg></div><div style="flex:1;text-align:center;font-size:15px;font-weight:600">一起听歌</div><div style="width:40px"></div></div><div style="display:flex;justify-content:center;align-items:center;margin-top:20px"><div style="width:80px;height:80px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;font-size:22px;z-index:2;overflow:hidden">'+((wxState.settings.myAvatarUrl)?'<img src="'+wxState.settings.myAvatarUrl+'" style="width:100%;height:100%;object-fit:cover"/>':esc((wxState.settings.myName||'我').slice(0,1)))+'</div><div style="width:80px;height:80px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;font-size:22px;margin-left:-12px;overflow:hidden">'+((wxState.settings.partnerAvatarUrl)?'<img src="'+wxState.settings.partnerAvatarUrl+'" style="width:100%;height:100%;object-fit:cover"/>':esc((extraState.musicPartner||'友').slice(0,1)))+'</div></div><div style="text-align:center;font-size:16px;font-weight:600;margin-top:14px">你 和 '+esc(extraState.musicPartner||'好友')+'</div><div style="text-align:center;font-size:12px;color:#a0a0a0;margin-top:6px">一起听了 0 分钟</div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px"><div style="width:200px;height:200px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;animation:maDisc 20s linear infinite;animation-play-state:'+(extraState.musicPlaying?'running':'paused')+'"><div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#2c2c2c,#555);display:flex;align-items:center;justify-content:center;font-size:32px">♪</div></div><div style="font-size:14px;color:#e0e0e0;text-align:center">'+(song?esc(song.name):'暂未选择歌曲')+'</div><div style="font-size:12px;color:#8b9198;text-align:center">'+(song?esc(song.artist||'未知'):'')+'</div></div><div style="padding:20px;padding-bottom:calc(30px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:40px"><button id="trPrev" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><polygon points="19 20 9 12 19 4 19 20"/></svg></button><button id="trToggle" style="width:64px;height:64px;border-radius:50%;background:#fff;color:#111;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center">'+(extraState.musicPlaying?'<svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>':'<svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><polygon points="5 3 19 12 5 21 5 3"/></svg>')+'</button><button id="trNext" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><polygon points="5 4 15 12 5 20 5 4"/></svg></button></div></div>';document.body.insertAdjacentHTML('beforeend',html);document.getElementById('trBack').addEventListener('click',function(){document.getElementById('togetherRoom').remove()});document.getElementById('trToggle').addEventListener('click',function(){var a=ensureMusicAudio();if(extraState.musicPlaying){a.pause();extraState.musicPlaying=false}else{a.play().catch(function(){});extraState.musicPlaying=true}saveExtra();document.getElementById('togetherRoom').remove();openTogetherRoom()});document.getElementById('trPrev').addEventListener('click',function(){playMusicAt(extraState.musicIndex-1);document.getElementById('togetherRoom').remove();openTogetherRoom()});document.getElementById('trNext').addEventListener('click',function(){playMusicAt(extraState.musicIndex+1);document.getElementById('togetherRoom').remove();openTogetherRoom()})}
-  /* ========== 浏览器内消息弹窗 ========== */
+ /* ========== 浏览器内消息弹窗 ========== */
 function showInAppPopup(opts){
 var beh=(wxState.settings&&wxState.settings.behavior)||{};
 if(!beh.popupEnabled)return;
@@ -2136,9 +2135,9 @@ bodyHtml='<div class="beau-body">'+
 '<div class="beau-section-title">全局自定义 CSS</div>'+
 '<div style="background:#fff;border-radius:16px;padding:14px;margin-bottom:14px">'+
 '<div style="font-size:12px;color:#8b9198;line-height:1.7;margin-bottom:8px">写在这里的 CSS 会作用到整个页面。</div>'+
-'<textarea id="beauGlobalCSS" style="width:100%;border:1px solid #e2e5e9;border-radius:12px;padding:12px;font-size:13px;font-family:monospacecursor;outline:none;min-height:220:px;resize:vertical;box-sizing:borderpointer-box;background:#fafbfc">'+esc(s;.globalCSS||'')+'</textarea>'font+
+'<textarea id="beauGlobalCSS" style="width:100%;border:1px solid #e2e5e9;border-radius:12px;padding:12px;font-size:13px;font-family:monospace;outline:none;min-height:220px;resize:vertical;box-sizing:border-box;background:#fafbfc">'+esc(s.globalCSS||'')+'</textarea>'+
 '</div>'+
-'<button id="beauCSSApply" style="width:100%;padding:14px-family;border:0;border-radius:14px;background:#ff7eb:9;color:#fff;font-sizeinherit:15px;;font-weight:600;margin-bottom:10px">应用 CSS</button>'+
+'<button id="beauCSSApply" style="width:100%;padding:14px;border:0;border-radius:14px;background:#ff7eb9;color:#fff;font-size:15px;cursor:pointer;font-family:inherit;font-weight:600;margin-bottom:10px">应用 CSS</button>'+
 '<button id="beauCSSClear" style="width:100%;padding:14px;border:1px solid #fde0e0;border-radius:14px;background:#fff;color:#e05a5a;font-size:15px;cursor:pointer;font-family:inherit;font-weight:500">清空所有 CSS</button>'+
 '</div>';
 }
@@ -2200,32 +2199,4 @@ initPage();
 renderHomePages();
 </script>
 </body>
-</html>
-renderHomePages();
-/* 自救：主屏空白时自动修复 */
-setTimeout(function(){
-var p0=document.getElementById('homePage0');
-if(!p0)return;
-var hasContent=p0.innerHTML&&p0.innerHTML.trim()&&p0.innerHTML.indexOf('home-empty-tip')<0;
-if(hasContent)return;
-try{
-localStorage.removeItem('desktop_home_pages_v1');
-localStorage.removeItem('desktop_home_bg_v1');
-localStorage.removeItem('desktop_home_theme_v1');
-localStorage.removeItem('desktop_home_widgets_v1');
-localStorage.removeItem('desktop_app_icons_v1');
-homePageState={widgets:{},apps:{},widgetOrder:['couple','music','anniversary','inputs'],order:[]};
-homeBgState={image:''};
-homeThemeState={mode:'light'};
-homeWidgetsState={input1:'',input2:'',coupleText:''};
-iconState={};
-}catch(e){}
-try{renderHomePages();}catch(e){}
-var p1=document.getElementById('homePage0');
-if(p1&&(!p1.innerHTML||!p1.innerHTML.trim()||p1.innerHTML.indexOf('home-empty-tip')>=0)){
-p1.innerHTML='<div style="padding:60px 20px;text-align:center;color:#b0b0b0;font-size:14px">主屏渲染失败，请检查代码是否完整拼接<br><br>打开设置 → 数据备份 → 导出，再重新导入</div>';
-}
-},800);
-</script>
-</body>
-</html>
+</html>                                                                                                                                                                                                                                                                 
