@@ -2201,3 +2201,31 @@ renderHomePages();
 </script>
 </body>
 </html>
+renderHomePages();
+/* 自救：主屏空白时自动修复 */
+setTimeout(function(){
+var p0=document.getElementById('homePage0');
+if(!p0)return;
+var hasContent=p0.innerHTML&&p0.innerHTML.trim()&&p0.innerHTML.indexOf('home-empty-tip')<0;
+if(hasContent)return;
+try{
+localStorage.removeItem('desktop_home_pages_v1');
+localStorage.removeItem('desktop_home_bg_v1');
+localStorage.removeItem('desktop_home_theme_v1');
+localStorage.removeItem('desktop_home_widgets_v1');
+localStorage.removeItem('desktop_app_icons_v1');
+homePageState={widgets:{},apps:{},widgetOrder:['couple','music','anniversary','inputs'],order:[]};
+homeBgState={image:''};
+homeThemeState={mode:'light'};
+homeWidgetsState={input1:'',input2:'',coupleText:''};
+iconState={};
+}catch(e){}
+try{renderHomePages();}catch(e){}
+var p1=document.getElementById('homePage0');
+if(p1&&(!p1.innerHTML||!p1.innerHTML.trim()||p1.innerHTML.indexOf('home-empty-tip')>=0)){
+p1.innerHTML='<div style="padding:60px 20px;text-align:center;color:#b0b0b0;font-size:14px">主屏渲染失败，请检查代码是否完整拼接<br><br>打开设置 → 数据备份 → 导出，再重新导入</div>';
+}
+},800);
+</script>
+</body>
+</html>
