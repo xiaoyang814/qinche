@@ -303,9 +303,9 @@ body.theme-dark .wx-extra-item .we-name{color:#8b9198}
 .call-avatar{width:100px;height:100px;border-radius:50%;background:#07c160;color:#fff;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:bold}
 .call-name{font-size:24px;font-weight:600;margin-top:16px}
 .call-status{font-size:15px;color:#8b9198;margin-top:8px}
-#callCenterTip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,255,255,.14);border-radius:18px;padding:22px 36px;font-size:18px;color:#fff;display:none;align-items:center;justify-content:center;text-align:center;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.35);min-width:180px;font-weight:500}
-#callCenterTip.show{display:flex}
-.call-actions{display:flex;gap:70px;align-items:center;justify-content:center;margin-bottom:40px}
+#callCenterTip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,255,255,.14);border-radius:18px;padding:22px 36px;font-size:18px;color:#fff;display:none;align-items:center;justify-content:center;text-align:center;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.35);min-width:180-iconpx;font-weight:500}
+#callCenterTip.show{display{:flex}
+.call-actions{display:fontflex;gap:70px;align-items:center;just-sizeify-content:center;margin-bottom:40px}
 .call-end,.call-answer{width:70px;height:70px;border-radius:50%;border:0;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .call-end{background:#ff3b30}
 .call-answer{background:#07c160;display:none}
@@ -322,7 +322,7 @@ body.theme-dark .wx-extra-item .we-name{color:#8b9198}
 .call-mini-status{font-size:9px;color:#8b9198;margin-top:1px}
 .call-mini-end{width:24px;height:24px;border-radius:50%;background:#ff3b30;color:#fff;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;padding:0}
 .call-mini-end svg{width:12px;height:12px}
-.wx-popup-mask{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1200;display:none;align-items:center;justify-content:center;padding:20px}
+.wx-popup-m:ask{position:fixed;inset:0;background11:rgba(0,0,0,.4);z-index:1200;display:none;align-items:center;justify-content:center;padding:20px}
 .wx-popup-mask.show{display:flex}
 .wx-popup{background:#fff;border-radius:18px;width:100%;max-width:360px;padding:20px;color:#111;max-height:80vh;overflow-y:auto}
 .wx-popup-title{font-size:16px;font-weight:600;text-align:center;margin-bottom:16px}
@@ -376,7 +376,7 @@ body.theme-dark .wx-extra-item .we-name{color:#8b9198}
 .in-app-popup-info{flex:1;min-width:0}
 .in-app-popup-title{font-size:14px;font-weight:600;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .in-app-popup-text{font-size:13px;color:#666;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.in-app-popup-icon{font-size:11px;color:#8b9198;margin-top:2px}
+.in-app-popuppx;color:#8b9198;margin-top:2px}
 :root{--theme:#07c160;--theme-text:#fff}
 .wx-bottom-tab.active{color:var(--theme)!important}
 .wx-bottom-tab.active svg{color:var(--theme)!important}
@@ -402,7 +402,7 @@ var K={wxSettings:'desktop_wx_settings_v1',wxContacts:'desktop_wx_contacts_v1',w
 var wxState={currentChat:null,currentTab:'chats',settings:null,chats:[],contacts:[],moments:[]};
 var zikaState={list:[],stickers:[],yanwenzi:[],pats:[],groups:[],search:'',tab:'list',currentGroup:'all'};
 var stickerState={list:[],currentTab:'custom'};
-var extraState={countdowns:[],favs:[],mails:[],mailTab:'in',musicList:[],musicPlaying:false,musicIndex:-1,musicPartner:'',musicAvatarSide:'left',watchList:[],watchChats:{},storeCustom:[],balance:1000000000000,purchased:[],hisPhone:null,period:{records:[],cycle:28,duration:5},musicTab:'all',musicLoop:'list',heart:88,musicTogetherStart:0,hisData:{music:[],watch:[],store:[],favs:[],moments:[],balance:1000000000000}};
+var extraState={countdowns:[],favs:[],mails:[],mailTab:'in',musicList:[],musicPlaying:false,musicIndex:-1,musicPartner:'',musicAvatarSide:'left',watchList:[],watchChats:{},storeCustom:[],balance:1000000000000,purchased:[],hisPhone:null,period:{records:[],cycle:28,duration:5},musicTab:'all',musicLoop:'list',heart:88,musicTogetherStart:0,musicChats:{},musicLikes:{},musicFavs:{},momentsNotifSeen:0,hisData:{music:[],watch:[],store:[],favs:[],moments:[],balance:1000000000000}};
 var homePageState={widgets:{},apps:{},widgetOrder:['couple','music','anniversary','inputs'],order:[]};
 var homeBgState={image:''};
 var homeThemeState={mode:'light'};
@@ -482,6 +482,10 @@ if(ex.period)extraState.period=ex.period;
 if(ex.musicTab)extraState.musicTab=ex.musicTab;
 if(ex.musicLoop)extraState.musicLoop=ex.musicLoop;
 if(typeof ex.heart==='number')extraState.heart=ex.heart;
+if(ex.musicChats)extraState.musicChats=ex.musicChats;
+if(ex.musicLikes)extraState.musicLikes=ex.musicLikes;
+if(ex.musicFavs)extraState.musicFavs=ex.musicFavs;
+if(typeof ex.momentsNotifSeen==='number')extraState.momentsNotifSeen=ex.momentsNotifSeen;
 if(ex.hisData)extraState.hisData=ex.hisData;
 if(!extraState.hisData)extraState.hisData={music:[],watch:[],store:[],favs:[],moments:[],balance:1000000000000};
 if(!extraState.hisData.music)extraState.hisData.music=[];
@@ -975,9 +979,9 @@ function openSettings(){document.getElementById('settingsPage').classList.add('o
 document.getElementById('settingsBack').addEventListener('click',function(){document.getElementById('settingsPage').classList.remove('open')});
 function renderSettings(){
 var s=wxState.settings;var b=s.behavior;
-function sw(key,label,desc){return'<div class="settings-switch" style="flex-direction:column;align-items:stretch;padding:14px 0;border-bottom:1px solid #f0f0f0"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div style="flex:1"><div style="font-size:15px;color:#111;font-weight:500">'+label+'</div><div style="font-size:12px;color:#8b9198;margin-top:4px;line-height:1.5">'+desc+'</div></div><button class="settings-switch-btn '+(b[key]?'on':'')+'" data-sw="'+key+'" style="flex-shrink:0;margin-top:2px"></button></div></div>'}
-document.getElementById('settingsBody').innerHTML=
-'<div class="settings-group-title">外观</div><div class="settings-block"><div class="settings-switch" style="padding:14px 0"><div style="flex:1"><div style="font-size:15px;color:#111;font-weight:500">夜间模式</div><div style="font-size:12px;color:#8b9198;margin-top:4px">开启后主屏变深色，像手机夜间模式</div></div><button class="settings-switch-btn '+(homeThemeState.mode==='dark'?'on':'')+'" id="nightModeSw"></button></div></div>'+
+function sw(key,label,desc){return'<div class="settings-switch" style="flex-direction:column;align-items:stretch;padding:14px 0;border-bottom:1px solid #f0f0f0"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div style="flex:1"><div style="font-size:15px;color:#111;font-weight:500">'+label+'</div><div style="font-size:12px;color:#8b9198;margin-top:4px;line-height:1.5">'+desc+'</div></div><button class="settings-switch-btn '+(b[key]?'on':'')+'" data-sw="'+key+'" style="flex-shrink:0;margin-top:20px"></button></div></div>'}
+document.getElementById('settingsBodyf').innerHTML=
+'<div class="settings-group-title">外观</div><div class="0settings-block"><div class="settings-switch" style="padding:"><14px 0"><div style="flex:1"><divdiv style="font-size:15px;color:#111;font-weight style:500">夜间模式</div><div style="font-size:12px;color:#8b9198;margin-top:4px">开启后主屏变深色，像手机夜间模式</div></div><button class="settings-switch-btn '+(homeThemeState.mode==='dark'?'on':'')+'" id="nightModeSw"></button></div></div>'+
 '<div class="settings-group-title">头像</div><div class="settings-block"><div class="settings-row" id="myAvRow"><div class="sr-title">我的头像</div><div class="sr-value">'+(s.myAvatarUrl?'已设置':'未设置')+'</div></div><div class="settings-row" id="paAvRow"><div class="sr-title">对方头像</div><div class="sr-value">'+(s.partnerAvatarUrl?'已设置':'未设置')+'</div></div></div>'+
 '<div class="settings-group-title">接收消息/通知推送</div><div class="settings-block">'+sw('pushEnabled','接收消息推送','开启后，对方回复、主动发消息、发朋友圈、回信时会弹出通知（需要把本站添加到主屏幕，并保持后台运行）')+
 '<button id="testPushBtn" style="width:100%;padding:12px 0;margin-top:12px;border:1px solid #e2e5e9;border-radius:12px;background:#fff;font-size:14px;cursor:pointer;font-family:inherit;color:#111">测试推送</button></div>'+
@@ -989,7 +993,7 @@ document.getElementById('settingsBody').innerHTML=
 ((s.customFestivals||[]).length?s.customFestivals.map(function(f,i){return'<div style="padding:12px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f0f0"><div><div style="font-size:15px;color:#111;font-weight:500">'+esc(f.name)+'</div><div style="font-size:12px;color:#8b9198;margin-top:2px">每年 '+esc(f.md)+'</div></div><button class="fest-del" data-i="'+i+'" style="width:28px;height:28px;border:0;border-radius:50%;background:#f5f6f8;color:#8b9198;cursor:pointer">×</button></div>'}).join(''):'<div style="padding:14px 0;font-size:13px;color:#8b9198;text-align:center">还没有自定义节日</div>')+
 '</div><button id="festAdd" style="width:100%;padding:12px 0;margin-top:12px;border:1px dashed #e2e5e9;border-radius:12px;background:#fff;font-size:14px;cursor:pointer;font-family:inherit;color:#111">+ 添加节日</button></div>'+
 '<div class="settings-group-title">主动行为间隔（秒）</div><div class="settings-block">'+
-'<div style="padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #f0f0f0"><div style="font-size:15px;color:#111;flex:1">主动发消息（分钟）</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:12px;color:#8b9198">最少</span><input type="number" id="msgMinInp" value="'+(s.intervals.msgMin||5)+'" min="1" style="width:56px;border:1px solid #e2e5e9;border-radius:10px;padding:8px;font-size:15px;text-align:center;font-family:inherit;outline:none"/><span style="color:#8b9198;font-size:13px">~</span><span style="font-size:12px;color:#8b9198">最多</span><input type="number" id="msgMaxInp" value="'+(s.intervals.msgMax||30)+'" min="1" style="width:56px;border:1px solid #e2e5e9;border-radius:10px;padding:8px;font-size:15px;text-align:center;font-family:inherit;outline:none"/></div></div>'+
+'<div style="padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #f0f="font-size:15px;color:#111;flex:1">主动发消息（分钟）</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:12px;color:#8b9198">最少</span><input type="number" id="msgMinInp" value="'+(s.intervals.msgMin||5)+'" min="1" style="width:56px;border:1px solid #e2e5e9;border-radius:10px;padding:8px;font-size:15px;text-align:center;font-family:inherit;outline:none"/><span style="color:#8b9198;font-size:13px">~</span><span style="font-size:12px;color:#8b9198">最多</span><input type="number" id="msgMaxInp" value="'+(s.intervals.msgMax||30)+'" min="1" style="width:56px;border:1px solid #e2e5e9;border-radius:10px;padding:8px;font-size:15px;text-align:center;font-family:inherit;outline:none"/></div></div>'+
 [['pat','主动拍一拍'],['sticker','主动发表情包'],['call','主动打电话'],['letter','主动寄信'],['redPacket','主动发红包'],['inviteMusic','邀请一起听歌'],['watch','自己看剧'],['inviteWatch','邀请一起看剧'],['listenMusic','自己听歌'],['fav','主动收藏'],['giftBuy','给你买东西'],['moment','发朋友圈'],['commentMoment','评论你的朋友圈'],['buy','自己买东西']].map(function(it){
 var v=(s.intervals&&typeof s.intervals[it[0]]==='number')?s.intervals[it[0]]:0;
 return'<div style="padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #f0f0f0"><div style="font-size:15px;color:#111;flex:1">'+it[1]+'</div><input type="number" class="pi-input" data-key="'+it[0]+'" value="'+v+'" min="1" style="width:80px;border:1px solid #e2e5e9;border-radius:10px;padding:8px;font-size:15px;text-align:center;font-family:inherit;outline:none"/></div>';
@@ -1261,7 +1265,7 @@ function setHeart(v){extraState.heart=Math.max(0,Math.min(100,v));saveExtra()}
 function bumpHeart(n){setHeart(getHeart()+(n||1))}
 function showTypingHint(){var el=document.getElementById('wxTypingHint');if(el)el.textContent='对方正在输入...'}
 function hideTypingHint(){var el=document.getElementById('wxTypingHint');if(el)el.textContent=''}
-  function openChat(id){hideTypingHint();var chat=wxState.chats.find(function(c){return c.id===id});if(!chat)return;chat.unread=0;wxState.currentChat=chat;saveWxChat();document.getElementById('wxChatName').textContent=(chat.remark||chat.name);document.getElementById('wxChatView').classList.add('open');document.getElementById('wxMsgInput').value='';document.getElementById('wxSendBtn').disabled=true;wxQuoteState=null;document.getElementById('wxQuoteBar').classList.remove('show');wxPendingSticker=null;var _spb=document.getElementById('wxStickerPreviewBar');if(_spb)_spb.classList.remove('show');renderMsgs()}
+  function openChat(id){hideTypingHint();var chat=wxState.chats.find(function(c){return c.id===id});if(!chat)return;chat.unread=0;wxState.currentChat=chat;saveWxChat();document.getElementById('wxChatName').textContent=(chat.remark||chat.name);document.getElementById('wxChatView').classList.add('open');document.getElementById('wxMsgInput').value='';document.getElementById('wxSendBtn').disabled=true;wxQuoteState=null;document.getElementById('wxQuoteBar').classList.remove('show');wxPendingSticker=null;renderMsgs()}
 function renderMsgs(){
 var chat=wxState.currentChat;if(!chat)return;
 var s=wxState.settings;
@@ -1279,7 +1283,7 @@ else if(type==='transfer'){var done=m.status==='done';var bg=done?'#a0a0a0':s.tr
 else if(type==='call'){return'<div class="wx-msg-row '+(m.me?'me':'them')+'" data-midx="'+mi+'" style="align-self:center;max-width:100%"><div class="wx-call-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>'+esc(m.text||'通话已结束')+'</div></div>'}
 else if(type==='invite'){var _it=m.inviteType||'music';var _icon=_it==='music'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 8 16 12 10 16 10 8"/></svg>';var _txt=_it==='music'?'邀请你一起听歌':'邀请你一起看剧';body='<div class="wx-invite-card" data-invite="'+_it+'" style="background:rgba(0,0,0,.06);border-radius:16px;padding:9px 14px;display:inline-flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;color:#111">'+_icon+'<span>'+_txt+'</span></div>'}
 else if(type==='pat'){return'<div class="wx-msg-row '+(m.me?'me':'them')+'" data-midx="'+mi+'" style="align-self:center;max-width:100%"><div class="wx-pat-tip">'+esc(m.text)+'</div></div>'}
-else if(type==='questionnaire'){body='<div class="wx-question-card"><div class="qq-title">'+esc(m.title)+'</div>';var answered=(m.answers&&m.answers.length>0);(m.questions||[]).forEach(function(q,i){var qType=q.type||'single';body+='<div class="qq-q">'+(i+1)+'. '+esc(q.title)+'</div>';if(qType==='single'){(q.options||[]).forEach(function(o,oi){var checked=answered&&m.answers[i]&&m.answers[i].idx===oi;body+='<label class="qq-opt"><input type="radio" name="q'+m.id+'_'+i+'" value="'+oi+'" '+(checked?'checked':'')+' '+(answered?'disabled':'')+'/>'+esc(o)+'</label>'})}else if(qType==='multiple'){(q.options||[]).forEach(function(o,oi){var checked=answered&&m.answers[i]&&m.answers[i].idxs&&m.answers[i].idxs.indexOf(oi)>-1;body+='<label class="qq-opt"><input type="checkbox" data-q="'+m.id+'_'+i+'" value="'+oi+'" '+(checked?'checked':'')+' '+(answered?'disabled':'')+'/>'+esc(o)+'</label>'})}else{var val=answered&&m.answers[i]?esc(m.answers[i].text||''):'';body+='<input type="text" class="qq-text" data-q="'+m.id+'_'+i+'" placeholder="请输入..." value="'+val+'" '+(answered?'disabled':'')+'/>'}});if(!answered)body+='<button class="qq-submit" data-id="'+(m.id||'')+'">提交</button>';else body+='<div class="qq-done">已提交</div>';body+='</div>'}
+else if(type==='questionnaire'){body='<div class="wx-question-card"><div class="qq-title">'+esc(m.title)+'</div>';var answered=(m.answers&&m.answers.length>0);(m.questions||[]).forEach(function(q,i){var qType=q.type||'single';body+='<div class="qq-q">'+(i+1)+'. '+esc(q.title)+'</div>';if(qType==='single'){(q.options||[]).forEach(function(o,oi){var checked=answered&&m.answers[i]&&m.answers[i].idx===oi;body+='<label class="qq-opt"><input type="radio" name="q'+m.id+'_'+i+'" value="'+oi+'" '+(checked?'checked':'')+' '+(answered?'disabled':'')+'/>'+esc(o)+'</label>'})}else if(qType==='multiple'){(q.options||[]).forEach(function(o,oi){var checked=answered&&m.answers[i]&&m.answers[i].idxs&&m.answers[i].idxs.indexOf(oi)>-1;body+='<label class="qq-opt"><input type="checkbox" data-q="'+m.id+'_'+i+'" value="'+oi+'" '+(checked?'checked':'')+' '+(answered?'disabled':'')+'/>'+esc(o)+'</label>'})}else{var val=answered&&m.answers[i]?esc(m.answers[i].text||''):'';body+='<input type="text" class="qq-text" data-q="'+m.id+'_'+i+'" placeholder="请输入..." value="'+val+'" '+(answered?'disabled':'')+'/>'}});if(!answered)body+='<button class="qq-submit" data-id="'+(m.id||'')+'">提交</button>';else body+='<div class="qq-done">'+(m.me?'对方已填':'已提交')+'</div>';body+='</div>'}
 var showRead=(m.me&&beh.readReceipt);
 var tags='';
 if(!m.me&&type!=='pat'&&type!=='call'&&type!=='voice'&&beh.showMsgTags&&!m.noTag){
@@ -1484,12 +1488,12 @@ bodyHtml='<div style="padding:6px 4px 10px"><input id="wsSearchInp" placeholder=
 var addBtn='<div id="wsAddTile" style="aspect-ratio:1;border:1.5px dashed #c8cdd3;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#8b9198;font-size:26px;font-weight:300;background:#fafafa">+</div>';
 var tiles=allCustom.map(function(s,i){return'<div class="wx-sticker-item" data-i="'+i+'" style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:#f5f6f8;display:flex;align-items:center;justify-content:center;cursor:pointer"><img src="'+s+'" style="width:100%;height:100%;object-fit:cover"/></div>'}).join('');
 bodyHtml='<div style="font-size:13px;color:#333;font-weight:500;padding:6px 4px 10px">添加的单个表情</div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 4px 10px">'+addBtn+tiles+'</div>';
-}
+Opt}
 
 p.innerHTML=head+bodyHtml;
-var cv=document.getElementById('wxChatView');cv.appendChild(mask);cv.appendChild(p);
+var cv=documentBtn.getElementById('wxChatView');cv.appendChild.style(mask);cv.appendChild(p);
 
-p.querySelectorAll('.ws-tab2').forEach(function(t){t.addEventListener('click',function(){stickerState.currentTab=t.dataset.t;stickerPanel()})});
+p.querySelectorAll('..displayws-tab2').forEach(function(t='){t.addEventListener('click',function(){stickerState.currentTab=tblock.dataset.t;stickerPanel()})});
 document.getElementById('wsClose2').addEventListener('click',closeAllPanels);
 p.querySelectorAll('.wx-emoji-item').forEach(function(it){it.addEventListener('click',function(){var e=it.dataset.e;var inp=document.getElementById('wxMsgInput');var btn=document.getElementById('wxSendBtn');if(!inp)return;inp.value=(inp.value||'')+e;if(btn)btn.disabled=!inp.value.trim();inp.focus()})});
 p.querySelectorAll('.wx-sticker-item').forEach(function(it){it.addEventListener('click',function(){var s=allCustom[parseInt(it.dataset.i,10)];if(!s)return;var chat=wxState.currentChat;if(!chat)return;chat.msgs.push({me:true,type:'sticker',src:s,time:nowTime(),read:false});saveWxChat();closeAllPanels();renderMsgs()})});
@@ -1518,6 +1522,30 @@ var chat=wxState.currentChat;
 chat.msgs.push({me:true,type:'transfer',id:'tf'+Date.now(),amount:a.toFixed(2),note:note,status:'pending',time:nowTime(),read:false});
 saveWxChat();closePopup();renderMsgs();
 });
+}
+function autoAnswerQuestionnaire(chat,m){
+if(!m||!m.questions||!m.questions.length)return;
+var answers=[];
+m.questions.forEach(function(q){
+var qType=q.type||'single';
+if(qType==='single'){
+answers.push({idx:Math.floor(Math.random()*(q.options||[]).length)});
+}else if(qType==='multiple'){
+var n=1+Math.floor(Math.random()*(q.options||[]).length);
+var pool=[];for(var i=0;i<(q.options||[]).length;i++)pool.push(i);
+var picked=[];
+for(var j=0;j<n&&pool.length;j++){var k=Math.floor(Math.random()*pool.length);picked.push(pool[k]);pool.splice(k,1)}
+picked.sort(function(a,b){return a-b});
+answers.push({idxs:picked});
+}else{
+var t='';
+if(zikaState.list&&zikaState.list.length){t=zikaState.list[Math.floor(Math.random()*zikaState.list.length)].text}
+answers.push({text:t});
+}
+});
+m.answers=answers;
+saveWxChat();
+if(wxState.currentChat===chat)renderMsgs();
 }
 function openQuestionPopup(){
 var html='<div class="wx-popup-title">创建问卷</div>'+
@@ -1573,7 +1601,7 @@ div.dataset.qtype=b.dataset.t;
 var optsArea=div.querySelector('.qn-opts');
 var addOptBtn=div.querySelector('.qn-addopt');
 if(b.dataset.t==='text'){optsArea.style.display='none';addOptBtn.style.display='none'}
-else{optsArea.style.display='block';addOptBtn.style.display='block'}
+else{optsArea.style.display='block';add'}
 });
 });
 div.querySelector('.qn-del').addEventListener('click',function(){div.remove();renumber()});
@@ -1602,8 +1630,12 @@ qs.push({type:qt,title:qtext,options:opts});
 }
 if(!qs.length)return alert('至少填一道题');
 var chat=wxState.currentChat;if(!chat)return;
-chat.msgs.push({me:true,type:'questionnaire',id:'qn'+Date.now(),title:title,questions:qs,answers:[],time:nowTime(),read:false});
+var _qnMsg={me:true,type:'questionnaire',id:'qn'+Date.now(),title:title,questions:qs,answers:[],time:nowTime(),read:false};
+chat.msgs.push(_qnMsg);
 chat.time=nowTime().slice(0,5);saveWxChat();closePopup();renderMsgs();
+setTimeout(function(){
+if(!_qnMsg.answers||!_qnMsg.answers.length)autoAnswerQuestionnaire(chat,_qnMsg);
+},2000+Math.random()*3000);
 });
 
 addQuestion();
@@ -2107,6 +2139,32 @@ function openWatchPlayer(i){var w=extraState.watchList[i];if(!w)return;var src;i
 /* ========== 音乐 ========== */
 function ensureMusicAudio(){if(!musicAudio){musicAudio=new Audio();musicAudio.addEventListener('ended',function(){playMusicAt(extraState.musicIndex+1)})}return musicAudio}
 function fmtMusicTime(s){s=Math.floor(s||0);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function parseLyric(raw){
+if(!raw)return [];
+var lines=raw.split('\n');
+var out=[];
+var hasTs=false;
+var re=/\[(\d{1,2}):(\d{1,2})(?:[.:](\d{1,3}))?\]/;
+lines.forEach(function(line){
+line=line.trim();
+if(!line)return;
+var m=line.match(re);
+if(m){
+hasTs=true;
+var mm=parseInt(m[1],10)||0;
+var ss=parseInt(m[2],10)||0;
+var ms=m[3]?parseInt(m[3].padEnd(3,'0'),10):0;
+var t=mm*60+ss+ms/1000;
+var txt=line.replace(re,'').trim();
+if(txt)out.push({t:t,text:txt});
+}
+});
+if(hasTs){
+out.sort(function(a,b){return a.t-b.t});
+return out;
+}
+return raw.split('\n').map(function(x){return x.trim()}).filter(Boolean).map(function(x){return {t:null,text:x}});
+}
 function openMusicPlayer(){
 if(!extraState.musicList)extraState.musicList=[];
 if(!extraState.musicPartner){var names=wxState.contacts.map(function(c){return c.name});extraState.musicPartner=names.length?names[Math.floor(Math.random()*names.length)]:''}
@@ -2124,6 +2182,8 @@ var myName=s.myName||'我';
 var partnerName=extraState.musicPartner||'好友';
 var myAv=(s.myAvatarUrl)?'<img src="'+s.myAvatarUrl+'" style="width:100%;height:100%;object-fit:cover"/>':esc(myName.slice(0,1));
 var partnerAv=(s.partnerAvatarUrl)?'<img src="'+s.partnerAvatarUrl+'" style="width:100%;height:100%;object-fit:cover"/>':esc(partnerName.slice(0,1));
+var lyricLines=song?parseLyric(song.lyric||''):[];
+var curLyricIdx=-1;
 
 function coverGradient(title){
 var t=title||'♪';var h=0;
@@ -2158,20 +2218,16 @@ var html='<div id="musicFull" style="position:fixed;inset:0;background:linear-gr
 +'<div id="maToList" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>'
 +'</div>'
 
-+'<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:0 26px;flex-shrink:0">'
-+'<div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:110px">'
-+'<div id="maMyAvatar" style="width:52px;height:52px;border-radius:50%;background:#2f6fed;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;overflow:hidden;flex-shrink:0;cursor:pointer">'+myAv+'</div>'
-+'<div id="maMyCapsule" style="background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:5px 12px;font-size:12px;color:#fff;cursor:pointer;width:100%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(myName)+'</div>'
-+'</div>'
-+'<div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:110px">'
-+'<div id="maTaAvatar" style="width:52px;height:52px;border-radius:50%;background:#9b51e0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;overflow:hidden;flex-shrink:0;cursor:pointer">'+partnerAv+'</div>'
-+'<div id="maTaCapsule" style="background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:5px 12px;font-size:12px;color:#fff;cursor:pointer;width:100%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(partnerName)+'</div>'
++'<div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 16px">'
++'<div style="display:flex;align-items:center;justify-content:center">'
++'<div id="maMyAvatar" style="width:52px;height:52px;border-radius:50%;background:#2f6fed;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;overflow:hidden;flex-shrink:0;cursor:pointer;position:relative;z-index:2;border:2px solid rgba(20,20,30,.85)">'+myAv+'</div>'
++'<div id="maTaAvatar" style="width:52px;height:52px;border-radius:50%;background:#9b51e0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;overflow:hidden;flex-shrink:0;cursor:pointer;margin-left:-14px;border:2px solid rgba(20,20,30,.85)">'+partnerAv+'</div>'
 +'</div>'
 +'</div>'
 
-+'<div id="maChatArea" style="flex:1;min-height:60px;overflow-y:auto;padding:12px 18px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch">'+msgsHtml+'</div>'
++'<div id="maChatArea" style="flex:0 0 auto;max-height:110px;min-height:0;overflow-y:auto;padding:8px 18px 0;display:flex;flex-direction:column;gap:8px;-webkit-overflow-scrolling:touch;margin-top:6px">'+msgsHtml+'</div>'
 
-+'<div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-bottom:4px">'
++'<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;z-index:0">'
 +'<div style="width:150px;height:150px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.9);animation:maDisc 20s linear infinite;animation-play-state:'+(isPlaying?'running':'paused')+'">'
 +'<div style="'+discInnerStyle+'">'+coverChar(songTitle)+'</div>'
 +'<div style="position:absolute;width:12px;height:12px;border-radius:50%;background:#0a0a0a;z-index:3"></div>'
@@ -2183,25 +2239,27 @@ var html='<div id="musicFull" style="position:fixed;inset:0;background:linear-gr
 +'</div>'
 +'</div>'
 
-+'<div style="width:100%;max-width:340px;margin:0 auto;padding:4px 20px;flex-shrink:0;text-align:left">'
++'<div id="maLyricWrap" style="position:absolute;left:0;right:0;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;justify-content:center;align-items:center;height:44px;overflow:hidden;pointer-events:none;z-index:1">'
++'<div id="maLyricLine" style="font-size:14px;color:rgba(255,255,255,.85);text-align:center;padding:0 24px;line-height:1.4;max-width:100%;text-shadow:0 2px 8px rgba(0,0,0,.6);transition:opacity .3s">'+esc(lyricLines.length?lyricLines[0].text:'')+'</div>'
++'</div>'
+
++'<div style="position:absolute;left:0;right:0;bottom:0;width:100%;max-width:340px;margin:0 auto;padding:0 20px calc(16px + env(safe-area-inset-bottom))">'
++'<div style="text-align:left;margin-bottom:6px">'
 +'<div style="font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(songTitle)+'</div>'
 +'<div style="font-size:11px;color:#a0a0a0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px">'+esc(songArtist)+'</div>'
 +'</div>'
-
-+'<div style="width:100%;max-width:340px;margin:0 auto;padding:0 20px;flex-shrink:0">'
 +'<div style="display:flex;align-items:center;gap:10px">'
 +'<span id="maCur" style="font-size:11px;color:#a0a0a0;min-width:36px">00:00</span>'
 +'<input type="range" id="maProgress" min="0" max="100" value="0" style="flex:1;-webkit-appearance:none;height:3px;border-radius:2px;background:rgba(255,255,255,.15);outline:none"/>'
 +'<span id="maDur" style="font-size:11px;color:#a0a0a0;min-width:36px;text-align:right">00:00</span>'
 +'</div>'
-+'</div>'
-
-+'<div style="display:grid;grid-template-columns:repeat(5,1fr);width:100%;max-width:340px;margin:8px auto 0;padding-bottom:calc(16px + env(safe-area-inset-bottom));flex-shrink:0">'
++'<div style="display:grid;grid-template-columns:repeat(5,1fr);margin-top:10px">'
 +'<button id="maLoop" style="border:0;background:transparent;color:#fff;cursor:pointer;padding:0;justify-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></button>'
 +'<button id="maPrev" style="border:0;background:transparent;color:#fff;cursor:pointer;padding:0;justify-self:center"><svg viewBox="0 0 24 24" fill="currentColor" style="width:28px;height:28px"><polygon points="19 20 9 12 19 4 19 20"/></svg></button>'
 +'<button id="maPlay" style="width:56px;height:56px;background:#fff;border-radius:50%;color:#121212;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;justify-self:center">'+(isPlaying?'<svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>':'<svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><polygon points="5 3 19 12 5 21 5 3"/></svg>')+'</button>'
 +'<button id="maNext" style="border:0;background:transparent;color:#fff;cursor:pointer;padding:0;justify-self:center"><svg viewBox="0 0 24 24" fill="currentColor" style="width:28px;height:28px"><polygon points="5 4 15 12 5 20 5 4"/></svg></button>'
 +'<button id="maAdd2" style="border:0;background:transparent;color:#fff;cursor:pointer;padding:0;justify-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>'
++'</div>'
 +'</div>'
 
 +'</div>';
@@ -2274,11 +2332,31 @@ extraState.musicChats[partnerName].push(msg);saveExtra();
 appendMsgRow(msg);
 }
 document.getElementById('maMyAvatar').addEventListener('click',sendAsMe);
-document.getElementById('maMyCapsule').addEventListener('click',sendAsMe);
 document.getElementById('maTaAvatar').addEventListener('click',sendAsThem);
-document.getElementById('maTaCapsule').addEventListener('click',sendAsThem);
 
-if(!window._maUpdate){window._maUpdate=function(){var p=document.getElementById('maProgress'),cur=document.getElementById('maCur'),dur=document.getElementById('maDur');if(!p||!musicAudio)return;var d=musicAudio.duration||0,t=musicAudio.currentTime||0;p.value=d?Math.round(t/d*100):0;if(cur)cur.textContent=fmtMusicTime(t);if(dur)dur.textContent=fmtMusicTime(d)};var a=ensureMusicAudio();a.addEventListener('timeupdate',window._maUpdate);a.addEventListener('loadedmetadata',window._maUpdate)}
+if(!window._maUpdate){window._maUpdate=function(){
+var p=document.getElementById('maProgress'),cur=document.getElementById('maCur'),dur=document.getElementById('maDur');
+if(!p||!musicAudio)return;
+var d=musicAudio.duration||0,t=musicAudio.currentTime||0;
+p.value=d?Math.round(t/d*100):0;
+if(cur)cur.textContent=fmtMusicTime(t);
+if(dur)dur.textContent=fmtMusicTime(d);
+var lineEl=document.getElementById('maLyricLine');
+if(!lineEl||!lyricLines.length)return;
+var idx=-1;
+if(lyricLines[0].t===null){
+  if(d>0){idx=Math.min(lyricLines.length-1,Math.floor(t/d*lyricLines.length))}
+  else{idx=0}
+}else{
+  for(var i=0;i<lyricLines.length;i++){if(lyricLines[i].t<=t)idx=i;else break}
+  if(idx<0)idx=0;
+}
+if(idx!==curLyricIdx){
+  curLyricIdx=idx;
+  lineEl.style.opacity='0';
+  setTimeout(function(){lineEl.textContent=lyricLines[idx].text;lineEl.style.opacity='1'},150);
+}
+};var a=ensureMusicAudio();a.addEventListener('timeupdate',window._maUpdate);a.addEventListener('loadedmetadata',window._maUpdate)}
 window._maUpdate&&window._maUpdate();
 }
 function closeMusicApp(){var el=document.getElementById('musicFull');if(el)el.remove()}
@@ -2305,8 +2383,55 @@ document.querySelectorAll('.ma-del').forEach(function(b){b.addEventListener('cli
 function toggleMusicPlayPlayer(){var a=ensureMusicAudio();if(!extraState.musicList||!extraState.musicList.length){alert('列表为空，请点右上角列表添加歌曲');return}if(extraState.musicIndex<0){playMusicAt(0);return}if(extraState.musicPlaying){a.pause();extraState.musicPlaying=false}else{a.play().catch(function(){});extraState.musicPlaying=true}saveExtra();closeMusicApp();openMusicPlayer()}
 function toggleMusicPlay(){var a=ensureMusicAudio();if(!extraState.musicList||extraState.musicIndex<0){return}if(extraState.musicPlaying){a.pause();extraState.musicPlaying=false}else{a.play().catch(function(){});extraState.musicPlaying=true}saveExtra();if(document.getElementById('musicFull')){closeMusicApp();openMusicPlayer()}}
 function openMusicAddMenu(){openPopup('<div class="wx-popup-title">添加音乐</div><button class="icon-opt-btn" data-act="local" style="width:100%;padding:14px;margin-bottom:8px;border:1px solid #e2e5e9;border-radius:12px;background:#fff;font-size:14px;cursor:pointer;font-family:inherit">📁 从本地导入</button><button class="icon-opt-btn" data-act="url" style="width:100%;padding:14px;border:1px solid #e2e5e9;border-radius:12px;background:#fff;font-size:14px;cursor:pointer;font-family:inherit">🔗 从链接导入（VIP/免费歌/其他软件）</button>');document.querySelectorAll('.icon-opt-btn').forEach(function(b){b.addEventListener('click',function(){var a=b.dataset.act;closePopup();if(a==='local')importLocalMusic();else if(a==='url')importUrlMusic()})})}
-function importLocalMusic(){alert('本地音乐会占用大量存储空间（一首 3-5MB），容易撑爆。请改用「从链接导入」：复制 mp3 音频直链粘贴进来，不占存储、可永久保存。')}
-function importUrlMusic(){openPopup('<div class="wx-popup-title">从链接导入</div><input class="wx-popup-input" id="muName" placeholder="歌曲名"/><input class="wx-popup-input" id="muArtist" placeholder="歌手（可选）"/><input class="wx-popup-input" id="muSrc" placeholder="音频链接（http://... .mp3/.m4a）"/><div style="font-size:11px;color:#8b9198;margin-bottom:12px;line-height:1.6">提示：从网易云/QQ音乐等分享里复制音频直链，粘贴到这里即可。</div><div class="wx-popup-btns"><button class="wx-popup-btn cancel" id="muC">取消</button><button class="wx-popup-btn confirm" id="muK">添加</button></div>');document.getElementById('muC').addEventListener('click',closePopup);document.getElementById('muK').addEventListener('click',function(){var n=document.getElementById('muName').value.trim();var a=document.getElementById('muArtist').value.trim()||'网络';var s=document.getElementById('muSrc').value.trim();if(!n)return alert('请填歌曲名');if(!s)return alert('请填链接');if(!extraState.musicList)extraState.musicList=[];extraState.musicList.push({id:'m'+Date.now(),name:n,artist:a,src:s,type:'url'});saveExtra();closePopup();closeMusicApp();openMusicList()})}
+function importLocalMusic(){
+var i=document.createElement('input');
+i.type='file';
+i.accept='audio/*';
+i.multiple=true;
+i.style.display='none';
+document.body.appendChild(i);
+i.onchange=function(e){
+var fs=Array.prototype.slice.call(e.target.files||[]);
+if(!fs.length){if(i.parentNode)i.parentNode.removeChild(i);return;}
+if(!extraState.musicList)extraState.musicList=[];
+var loaded=0;
+fs.forEach(function(f){
+var url=URL.createObjectURL(f);
+var name=f.name.replace(/\.[^.]+$/,'');
+extraState.musicList.push({id:'m'+Date.now()+Math.floor(Math.random()*10000),name:name,artist:'本地',src:url,type:'local'});
+loaded++;
+if(loaded===fs.length){
+saveExtra();
+if(i.parentNode)i.parentNode.removeChild(i);
+closeMusicApp();
+openMusicList();
+alert('已导入 '+fs.length+' 首本地音乐\n\n注意：刷新页面后需要重新导入');
+}
+});
+};
+i.click();
+}
+function importUrlMusic(){
+openPopup('<div class="wx-popup-title">从链接导入</div>'+
+'<input class="wx-popup-input" id="muName" placeholder="歌曲名"/>'+
+'<input class="wx-popup-input" id="muArtist" placeholder="歌手（可选）"/>'+
+'<input class="wx-popup-input" id="muSrc" placeholder="音频链接（http://... .mp3/.m4a）"/>'+
+'<textarea class="wx-popup-input" id="muLyric" placeholder="歌词（可选，一行一句，可带 [00:12.00] 时间戳）" style="min-height:100px;resize:none;font-family:inherit"></textarea>'+
+'<div style="font-size:11px;color:#8b9198;margin-bottom:12px;line-height:1.6">歌词从网易云/QQ音乐复制整段粘贴，带时间戳就能精确同步。</div>'+
+'<div class="wx-popup-btns"><button class="wx-popup-btn cancel" id="muC">取消</button><button class="wx-popup-btn confirm" id="muK">添加</button></div>');
+document.getElementById('muC').addEventListener('click',closePopup);
+document.getElementById('muK').addEventListener('click',function(){
+var n=document.getElementById('muName').value.trim();
+var a=document.getElementById('muArtist').value.trim()||'网络';
+var s=document.getElementById('muSrc').value.trim();
+var lyr=document.getElementById('muLyric').value.trim();
+if(!n)return alert('请填歌曲名');
+if(!s)return alert('请填链接');
+if(!extraState.musicList)extraState.musicList=[];
+extraState.musicList.push({id:'m'+Date.now(),name:n,artist:a,src:s,type:'url',lyric:lyr});
+saveExtra();closePopup();closeMusicApp();openMusicList();
+});
+}
 function playMusicAt(i){var list=extraState.musicList||[];if(!list.length)return;if(i<0)i=list.length-1;if(i>=list.length)i=0;extraState.musicIndex=i;saveExtra();var a=ensureMusicAudio();a.src=list[i].src;a.play().then(function(){extraState.musicPlaying=true;saveExtra();closeMusicApp();openMusicPlayer()}).catch(function(){extraState.musicPlaying=false;saveExtra();closeMusicApp();openMusicPlayer();alert('播放失败：请检查音频链接是否有效')})}
 function openTogetherRoom(){var song=extraState.musicList&&extraState.musicIndex>=0?extraState.musicList[extraState.musicIndex]:null;var _tbg=(wxState.settings&&wxState.settings.togetherBgImg)||'';var _tbgStyle=_tbg?('background-image:url('+_tbg+');background-size:cover;background-position:center;'):'background:#0a0a0a;';var html='<div id="togetherRoom" style="position:fixed;inset:0;'+_tbgStyle+'color:#fff;display:flex;flex-direction:column;z-index:300;overflow:hidden"><div style="padding:16px;padding-top:calc(16px + env(safe-area-inset-top));display:flex;align-items:center;gap:12px"><div id="trBack" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><polyline points="15 18 9 12 15 6"/></svg></div><div style="flex:1;text-align:center;font-size:15px;font-weight:600">一起听歌</div><div style="width:40px"></div></div><div style="display:flex;justify-content:center;align-items:center;margin-top:20px"><div style="width:80px;height:80px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;font-size:22px;z-index:2;overflow:hidden">'+((wxState.settings.myAvatarUrl)?'<img src="'+wxState.settings.myAvatarUrl+'" style="width:100%;height:100%;object-fit:cover"/>':esc((wxState.settings.myName||'我').slice(0,1)))+'</div><div style="width:80px;height:80px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;font-size:22px;margin-left:-12px;overflow:hidden">'+((wxState.settings.partnerAvatarUrl)?'<img src="'+wxState.settings.partnerAvatarUrl+'" style="width:100%;height:100%;object-fit:cover"/>':esc((extraState.musicPartner||'友').slice(0,1)))+'</div></div><div style="text-align:center;font-size:16px;font-weight:600;margin-top:14px">你 和 '+esc(extraState.musicPartner||'好友')+'</div><div style="text-align:center;font-size:12px;color:#a0a0a0;margin-top:6px">一起听了 '+fmtTogetherTime()+'</div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px"><div style="width:200px;height:200px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;animation:maDisc 20s linear infinite;animation-play-state:'+(extraState.musicPlaying?'running':'paused')+'"><div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#2c2c2c,#555);display:flex;align-items:center;justify-content:center;font-size:32px">♪</div></div><div style="font-size:14px;color:#e0e0e0;text-align:center">'+(song?esc(song.name):'暂未选择歌曲')+'</div><div style="font-size:12px;color:#8b9198;text-align:center">'+(song?esc(song.artist||'未知'):'')+'</div></div><div style="padding:20px;padding-bottom:calc(30px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:40px"><button id="trPrev" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><polygon points="19 20 9 12 19 4 19 20"/></svg></button><button id="trToggle" style="width:64px;height:64px;border-radius:50%;background:#fff;color:#111;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center">'+(extraState.musicPlaying?'<svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>':'<svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><polygon points="5 3 19 12 5 21 5 3"/></svg>')+'</button><button id="trNext" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><polygon points="5 4 15 12 5 20 5 4"/></svg></button></div></div>';document.body.insertAdjacentHTML('beforeend',html);document.getElementById('trBack').addEventListener('click',function(){document.getElementById('togetherRoom').remove()});document.getElementById('trToggle').addEventListener('click',function(){var a=ensureMusicAudio();if(extraState.musicPlaying){a.pause();extraState.musicPlaying=false}else{a.play().catch(function(){});extraState.musicPlaying=true}saveExtra();document.getElementById('togetherRoom').remove();openTogetherRoom()});document.getElementById('trPrev').addEventListener('click',function(){playMusicAt(extraState.musicIndex-1);document.getElementById('togetherRoom').remove();openTogetherRoom()});document.getElementById('trNext').addEventListener('click',function(){playMusicAt(extraState.musicIndex+1);document.getElementById('togetherRoom').remove();openTogetherRoom()})}
   /* ========== 浏览器内消息弹窗 ========== */
